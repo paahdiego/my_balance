@@ -4,6 +4,7 @@ import 'package:my_balance/core/core.dart';
 import 'package:my_balance/modules/home/components/side_menu/side_menu.dart';
 import 'package:my_balance/modules/home/controllers/home_controller.dart';
 import 'package:my_balance/modules/home/controllers/menu_controller.dart';
+import 'package:my_balance/shared/components/app_default_button.dart';
 
 class HomePageBody extends StatefulWidget {
   const HomePageBody({
@@ -57,7 +58,66 @@ class _HomePageBodyState extends State<HomePageBody> {
                           SizedBox(width: 20),
                         ],
                       ),
-                      const Text('carteira'),
+                      Container(
+                        padding: EdgeInsets.all(50),
+                        decoration: BoxDecoration(
+                          color: AppColors.subBackgroundColor,
+                          borderRadius: BorderRadius.all(Radius.circular(32)),
+                        ),
+                        child: Column(
+                          children: [
+                            Text(
+                              'carteira',
+                              style: AppTextStyles.bodyText1(context)?.copyWith(
+                                color: AppColors.primary,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            AppDefaultButton(
+                              onPressed: () {},
+                              child: Text(
+                                "Botão",
+                                style:
+                                    AppTextStyles.bodyText1(context)?.copyWith(
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            AppDefaultButton(
+                              onPressed: () {},
+                              backgroundColor: AppColors.secondary,
+                              child: Text(
+                                "Botão",
+                                style:
+                                    AppTextStyles.bodyText1(context)?.copyWith(
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            AppDefaultButton(
+                              onPressed: () {},
+                              backgroundColor: AppColors.error,
+                              child: Text(
+                                "Botão",
+                                style:
+                                    AppTextStyles.bodyText1(context)?.copyWith(
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 );

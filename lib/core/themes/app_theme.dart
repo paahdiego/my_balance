@@ -4,11 +4,15 @@ import 'package:my_balance/core/core.dart';
 
 class AppThemes {
   static ThemeData defaultTheme(BuildContext context) =>
-      ThemeData.light().copyWith(
+      ThemeData.dark().copyWith(
         primaryColor: AppColors.primary,
-        scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
+        scaffoldBackgroundColor: AppColors.backgroundColor,
         textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(foregroundColor: AppColors.primary),
+          style: TextButton.styleFrom(
+            foregroundColor: AppColors.primary,
+            elevation: 2.0,
+            textStyle: AppTextStyles.caption(context)?.copyWith(fontSize: 14),
+          ),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
@@ -16,11 +20,12 @@ class AppThemes {
             shape: RoundedRectangleBorder(
               borderRadius: AppSizes.defaultBorderRadius,
             ),
+            textStyle: AppTextStyles.bodyText2(context)?.copyWith(fontSize: 16),
           ),
         ),
         drawerTheme: DrawerThemeData(
-          backgroundColor: AppColors.secondary,
-          scrimColor: AppColors.fontColor.withOpacity(0.5),
+          backgroundColor: AppColors.drawerBackgroundColor,
+          scrimColor: AppColors.backgroundColor.withOpacity(0.5),
           elevation: 2.0,
         ),
         listTileTheme: ListTileTheme.of(context).copyWith(

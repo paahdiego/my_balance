@@ -10,7 +10,7 @@ class AppInputField extends StatelessWidget {
     this.label,
     this.prefixIcon,
     this.suffixIcon,
-    this.autovalidateMode,
+    this.autovalidateMode = AutovalidateMode.onUserInteraction,
     this.autocorrect = false,
     this.textInputAction = TextInputAction.done,
     this.inputFormatters,
@@ -27,7 +27,7 @@ class AppInputField extends StatelessWidget {
   final String? label;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
-  final AutovalidateMode? autovalidateMode;
+  final AutovalidateMode autovalidateMode;
   final bool autocorrect;
   final List<TextInputFormatter>? inputFormatters;
   final TextInputType textInputType;
@@ -40,7 +40,7 @@ class AppInputField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      style: AppTextStyles.bodyText1(context),
+      style: AppTextStyles.bodyText1(context)?.copyWith(fontSize: 18),
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
         if (!currentFocus.hasPrimaryFocus) {
@@ -61,38 +61,45 @@ class AppInputField extends StatelessWidget {
         labelText: label,
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
-        labelStyle: AppTextStyles.bodyText1(context),
-        fillColor: AppColors.primary,
+        labelStyle: AppTextStyles.bodyText1(context)?.copyWith(fontSize: 16),
+        fillColor: AppColors.subBackgroundColor,
         focusColor: AppColors.primary,
-        enabledBorder: const UnderlineInputBorder(
+        filled: true,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
           borderSide: BorderSide(
-            width: 2.0,
+            width: 1.0,
             style: BorderStyle.solid,
-            color: AppColors.fontColor,
+            color: AppColors.fontColor.withAlpha(180),
           ),
         ),
-        focusedBorder: const UnderlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(16)),
           borderSide: BorderSide(
-            width: 2.0,
+            width: 1.0,
             style: BorderStyle.solid,
             color: AppColors.primary,
           ),
         ),
-        errorBorder: const UnderlineInputBorder(
+        errorBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(16)),
           borderSide: BorderSide(
-            width: 2.0,
+            width: 1.0,
             style: BorderStyle.solid,
             color: AppColors.error,
           ),
         ),
-        focusedErrorBorder: const UnderlineInputBorder(
+        focusedErrorBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(16)),
           borderSide: BorderSide(
-            width: 2.0,
+            width: 1.0,
             style: BorderStyle.solid,
             color: AppColors.error,
           ),
         ),
-        counterText: "",
+        errorStyle: AppTextStyles.bodyText1(context)?.copyWith(
+          color: AppColors.error,
+        ),
       ),
     );
   }

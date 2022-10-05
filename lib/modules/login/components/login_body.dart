@@ -33,6 +33,7 @@ class _LoginBodyState extends State<LoginBody> {
             shrinkWrap: true,
             children: [
               const AppLogo(),
+              const SizedBox(height: 40),
               AppInputField(
                 label: "E-mail",
                 controller: loginController.emailController,
@@ -43,11 +44,16 @@ class _LoginBodyState extends State<LoginBody> {
                   Validatorless.email("Digite um e-mail válido"),
                 ]),
               ),
+              const SizedBox(height: 20),
               AppInputField(
                 controller: loginController.passwordController,
                 label: "Senha",
                 textInputType: TextInputType.visiblePassword,
                 obscureText: true,
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.visibility_off),
+                  onPressed: () {},
+                ),
                 validator: Validatorless.multiple([
                   Validatorless.required("Digite sua senha"),
                 ]),
@@ -55,25 +61,52 @@ class _LoginBodyState extends State<LoginBody> {
                   loginController.login(context);
                 },
               ),
-              const SizedBox(height: 40),
-              AppDefaultButton(
-                onPressed: () {
-                  loginController.login(context);
-                },
-                child: ValueListenableBuilder<PageState>(
-                  valueListenable: loginController.pageStateNotifier,
-                  builder: (context, state, _) {
-                    switch (state) {
-                      case PageState.loading:
-                        return const AppLoadingIcon(
-                          valueColor: AppColors.white,
-                          size: 18,
-                        );
-                      case PageState.notLoading:
-                        return const Text("Entrar");
-                    }
-                  },
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "esqueci minha senha",
+                    style: AppTextStyles.bodyText2(context)?.copyWith(
+                      decoration: TextDecoration.underline,
+                      fontSize: 14,
+                    ),
+                  ),
                 ),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                  Expanded(
+                    child: AppDefaultButton(
+                      onPressed: () {},
+                      backgroundColor: AppColors.secondary,
+                      child: const Text("inscrever-se"),
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Expanded(
+                    child: AppDefaultButton(
+                      onPressed: () {
+                        loginController.login(context);
+                      },
+                      child: ValueListenableBuilder<PageState>(
+                        valueListenable: loginController.pageStateNotifier,
+                        builder: (context, state, _) {
+                          switch (state) {
+                            case PageState.loading:
+                              return const AppLoadingIcon(
+                                valueColor: AppColors.white,
+                                size: 18,
+                              );
+                            case PageState.notLoading:
+                              return const Text("entrar");
+                          }
+                        },
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

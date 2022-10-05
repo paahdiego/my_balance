@@ -12,6 +12,6 @@ class AppLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sizes = AppSizes(context);
-    return FlutterLogo(size: size ?? sizes.displayWidth * 0.3);
+    return FlutterLogo(size: size ?? sizes.displayWidth * 0.35);
   }
 }

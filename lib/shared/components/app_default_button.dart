@@ -5,19 +5,21 @@ class AppDefaultButton extends StatelessWidget {
     Key? key,
     required this.onPressed,
     required this.child,
+    this.backgroundColor,
   }) : super(key: key);
 
   final VoidCallback onPressed;
   final Widget child;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-        child: child,
-      ),
+      style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
+            backgroundColor: MaterialStateProperty.all(backgroundColor),
+          ),
+      child: child,
     );
   }
 }
