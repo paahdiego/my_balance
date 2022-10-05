@@ -42,7 +42,9 @@ class _SplashPageState extends State<SplashPage> {
                 children: const [
                   AppLogo(),
                   SizedBox(height: 40),
-                  Center(child: AppLoadingIcon()),
+                  Center(
+                    child: AppLoadingIcon(),
+                  ),
                 ],
               ),
             ),

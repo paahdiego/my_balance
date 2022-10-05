@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:my_balance/core/core.dart';
+import 'package:my_balance/core/themes/theme_controller.dart';
 
 class AppGradientContainer extends StatelessWidget {
   const AppGradientContainer({
@@ -11,20 +12,17 @@ class AppGradientContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          stops: [0.8, 1.0],
-          colors: [
-            AppColors.backgroundColor,
-            AppColors.subBackgroundColor,
-          ],
-          tileMode: TileMode.mirror,
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-      ),
-      child: child,
+    final themeController = ThemeController.instance(context);
+    return AnimatedBuilder(
+      animation: themeController,
+      builder: (context, _) {
+        return Container(
+          decoration: BoxDecoration(
+            gradient: AppColors.backgroundGradient(context),
+          ),
+          child: child,
+        );
+      },
     );
   }
 }

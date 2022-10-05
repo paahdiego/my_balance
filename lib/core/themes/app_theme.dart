@@ -3,10 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_balance/core/core.dart';
 
 class AppThemes {
-  static ThemeData defaultTheme(BuildContext context) =>
-      ThemeData.dark().copyWith(
+  static ThemeData darkTheme(BuildContext context) => ThemeData.dark().copyWith(
         primaryColor: AppColors.primary,
-        scaffoldBackgroundColor: AppColors.backgroundColor,
+        scaffoldBackgroundColor: AppColors.backgroundColorDark,
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
             foregroundColor: AppColors.primary,
@@ -24,8 +23,8 @@ class AppThemes {
           ),
         ),
         drawerTheme: DrawerThemeData(
-          backgroundColor: AppColors.drawerBackgroundColor,
-          scrimColor: AppColors.backgroundColor.withOpacity(0.5),
+          backgroundColor: AppColors.drawerBackgroundColorDark,
+          scrimColor: AppColors.backgroundColorDark.withOpacity(0.5),
           elevation: 2.0,
         ),
         listTileTheme: ListTileTheme.of(context).copyWith(
@@ -42,8 +41,52 @@ class AppThemes {
         ),
         textTheme: GoogleFonts.latoTextTheme(
           Theme.of(context).textTheme.apply(
-                bodyColor: AppColors.fontColor,
-                displayColor: AppColors.fontColor,
+                bodyColor: AppColors.fontColorDark,
+                displayColor: AppColors.fontColorDark,
+              ),
+        ),
+      );
+  static ThemeData lightTheme(BuildContext context) =>
+      ThemeData.light().copyWith(
+        primaryColor: AppColors.primary,
+        scaffoldBackgroundColor: AppColors.backgroundColorLight,
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            foregroundColor: AppColors.primary,
+            elevation: 2.0,
+            textStyle: AppTextStyles.caption(context)?.copyWith(fontSize: 14),
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: AppColors.primary,
+            shape: RoundedRectangleBorder(
+              borderRadius: AppSizes.defaultBorderRadius,
+            ),
+            textStyle: AppTextStyles.bodyText2(context)?.copyWith(fontSize: 16),
+          ),
+        ),
+        drawerTheme: DrawerThemeData(
+          backgroundColor: AppColors.drawerBackgroundColorLight,
+          scrimColor: AppColors.white.withOpacity(0.5),
+          elevation: 2.0,
+        ),
+        listTileTheme: ListTileTheme.of(context).copyWith(
+          iconColor: AppColors.primary,
+        ),
+        iconTheme: IconTheme.of(context).copyWith(
+          color: AppColors.primary,
+        ),
+        primaryIconTheme: IconTheme.of(context).copyWith(
+          color: AppColors.primary,
+        ),
+        buttonTheme: ButtonTheme.of(context).copyWith(
+          buttonColor: AppColors.primary,
+        ),
+        textTheme: GoogleFonts.latoTextTheme(
+          Theme.of(context).textTheme.apply(
+                bodyColor: AppColors.fontColorLight,
+                displayColor: AppColors.fontColorLight,
               ),
         ),
       );

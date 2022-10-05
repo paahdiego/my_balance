@@ -32,7 +32,10 @@ class DrawerListTile extends StatelessWidget {
           ),
           child: Row(
             children: [
-              Icon(icon, color: selected ? AppColors.white : AppColors.primary),
+              Icon(icon,
+                  color: selected
+                      ? AppColors.blackOrWhite(context)
+                      : AppColors.primary),
               const SizedBox(width: 10),
               Text(
                 title,

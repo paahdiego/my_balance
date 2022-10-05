@@ -62,7 +62,7 @@ class AppInputField extends StatelessWidget {
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
         labelStyle: AppTextStyles.bodyText1(context)?.copyWith(fontSize: 14),
-        fillColor: AppColors.subBackgroundColor,
+        fillColor: AppColors.subBackgroundColor(context),
         focusColor: AppColors.primary,
         filled: true,
         enabledBorder: OutlineInputBorder(
@@ -70,7 +70,7 @@ class AppInputField extends StatelessWidget {
           borderSide: BorderSide(
             width: 1.0,
             style: BorderStyle.solid,
-            color: AppColors.fontColor.withAlpha(180),
+            color: AppColors.fontColor(context).withAlpha(180),
           ),
         ),
         focusedBorder: const OutlineInputBorder(

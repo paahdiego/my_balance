@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_balance/core/core.dart';
+import 'package:my_balance/core/themes/theme_controller.dart';
 import 'package:my_balance/modules/login/controllers/login_controller.dart';
 import 'package:my_balance/shared/components/app_default_button.dart';
 import 'package:my_balance/shared/components/app_input_field.dart';
@@ -22,6 +23,7 @@ class _LoginBodyState extends State<LoginBody> {
   @override
   Widget build(BuildContext context) {
     final sizes = AppSizes(context);
+    final themeController = ThemeController.instance(context);
 
     return Container(
       height: sizes.safeHeight,
@@ -51,7 +53,7 @@ class _LoginBodyState extends State<LoginBody> {
                 textInputType: TextInputType.visiblePassword,
                 obscureText: true,
                 suffixIcon: IconButton(
-                  icon: Icon(Icons.visibility_off),
+                  icon: const Icon(Icons.visibility_off),
                   onPressed: () {},
                 ),
                 validator: Validatorless.multiple([
@@ -64,7 +66,9 @@ class _LoginBodyState extends State<LoginBody> {
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    themeController.changeTheme(context);
+                  },
                   child: Text(
                     "esqueci minha senha",
                     style: AppTextStyles.bodyText2(context)?.copyWith(

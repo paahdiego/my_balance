@@ -31,7 +31,7 @@ class ImageNetworkBuilder extends StatelessWidget {
           return child;
         } else {
           return Container(
-            color: AppColors.backgroundColor,
+            color: AppColors.backgroundColor(context),
             child: Center(
               child: CircularProgressIndicator(
                 value: currentProgress,

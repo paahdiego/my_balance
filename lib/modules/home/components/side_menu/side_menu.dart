@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_balance/app_controller.dart';
 import 'package:my_balance/core/core.dart';
+import 'package:my_balance/core/themes/theme_controller.dart';
 import 'package:my_balance/modules/home/components/drawer_list_tile/drawer_list_tile.dart';
 import 'package:my_balance/modules/home/controllers/home_controller.dart';
 import 'package:my_balance/modules/home/controllers/menu_controller.dart';
@@ -24,6 +25,7 @@ class _SideMenuState extends State<SideMenu> {
   Widget build(BuildContext context) {
     final appController = AppController.instance(context, listen: true);
     final menuController = MenuController.instance(context, listen: true);
+    final themeController = ThemeController.instance(context);
     final sizes = AppSizes(context);
 
     return Drawer(
@@ -42,7 +44,7 @@ class _SideMenuState extends State<SideMenu> {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: appController.loggedUser!.avatarUrl != null
-                        ? AppColors.fontColor
+                        ? AppColors.fontColor(context)
                         : null,
                   ),
                   child: ClipRRect(
@@ -61,7 +63,7 @@ class _SideMenuState extends State<SideMenu> {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.bodyText1(context)?.copyWith(
-                    color: AppColors.white,
+                    color: AppColors.blackOrWhite(context),
                   ),
                 ),
                 Text(
@@ -69,7 +71,7 @@ class _SideMenuState extends State<SideMenu> {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.bodyText1(context)?.copyWith(
-                    color: AppColors.white,
+                    color: AppColors.blackOrWhite(context),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -96,12 +98,25 @@ class _SideMenuState extends State<SideMenu> {
                 },
               ),
               const Spacer(),
-              DrawerListTile(
-                title: "Logout",
-                icon: Icons.power_settings_new_outlined,
-                onTap: () {
-                  appController.logout(context);
-                },
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        themeController.changeTheme(context);
+                      },
+                      icon: const Icon(Icons.dark_mode),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        appController.logout(context);
+                      },
+                      icon: const Icon(Icons.power_settings_new_outlined),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(height: sizes.paddingTop - sizes.paddingBottom + 20),
             ],
