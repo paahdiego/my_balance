@@ -8,4 +8,4 @@ class HomeController {
   set page(HomePages page) => pageNotifier.value = page;
 }
 
-enum HomePages { wallet }
+enum HomePages { wallet, secondPage }

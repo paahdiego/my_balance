@@ -5,6 +5,7 @@ import 'package:my_balance/modules/home/components/side_menu/side_menu.dart';
 import 'package:my_balance/modules/home/controllers/home_controller.dart';
 import 'package:my_balance/modules/home/controllers/menu_controller.dart';
 import 'package:my_balance/shared/components/app_default_button.dart';
+import 'package:my_balance/shared/components/app_gradient_container.dart';
 
 class HomePageBody extends StatefulWidget {
   const HomePageBody({
@@ -23,106 +24,111 @@ class _HomePageBodyState extends State<HomePageBody> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        key: widget.menuController.scaffoldKey,
-        drawer: SideMenu(homeController: homeController),
-        body: ValueListenableBuilder<HomePages>(
-          valueListenable: homeController.pageNotifier,
-          builder: (context, currentPage, _) {
-            switch (currentPage) {
-              case HomePages.wallet:
-                return SafeArea(
-                  child: Column(
-                    children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          IconButton(
-                            icon: Icon(Icons.menu),
-                            onPressed: () {
-                              widget.menuController.controlMenu();
-                            },
-                          ),
-                          SizedBox(width: 20),
-                          Expanded(
-                            child: Text(
-                              "Dashboard",
-                              style: AppTextStyles.bodyText1(context)?.copyWith(
-                                color: AppColors.primary,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 20),
-                        ],
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(50),
-                        decoration: BoxDecoration(
-                          color: AppColors.subBackgroundColor,
-                          borderRadius: BorderRadius.all(Radius.circular(32)),
-                        ),
-                        child: Column(
+    return AppGradientContainer(
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: AppColors.transparent,
+          key: widget.menuController.scaffoldKey,
+          drawer: SideMenu(homeController: homeController),
+          body: ValueListenableBuilder<HomePages>(
+            valueListenable: homeController.pageNotifier,
+            builder: (context, currentPage, _) {
+              switch (currentPage) {
+                default:
+                  return SafeArea(
+                    child: Column(
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              'carteira',
-                              style: AppTextStyles.bodyText1(context)?.copyWith(
-                                color: AppColors.primary,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            IconButton(
+                              icon: const Icon(Icons.menu),
+                              onPressed: () {
+                                widget.menuController.controlMenu();
+                              },
                             ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            AppDefaultButton(
-                              onPressed: () {},
+                            const SizedBox(width: 20),
+                            Expanded(
                               child: Text(
-                                "Botão",
+                                "Dashboard",
                                 style:
                                     AppTextStyles.bodyText1(context)?.copyWith(
+                                  color: AppColors.primary,
                                   fontSize: 20,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            AppDefaultButton(
-                              onPressed: () {},
-                              backgroundColor: AppColors.secondary,
-                              child: Text(
-                                "Botão",
-                                style:
-                                    AppTextStyles.bodyText1(context)?.copyWith(
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            AppDefaultButton(
-                              onPressed: () {},
-                              backgroundColor: AppColors.error,
-                              child: Text(
-                                "Botão",
-                                style:
-                                    AppTextStyles.bodyText1(context)?.copyWith(
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
+                            const SizedBox(width: 20),
                           ],
                         ),
-                      ),
-                    ],
-                  ),
-                );
-            }
-          },
+                        Container(
+                          padding: const EdgeInsets.all(50),
+                          decoration: const BoxDecoration(
+                            color: AppColors.subBackgroundColor,
+                            borderRadius: BorderRadius.all(Radius.circular(32)),
+                          ),
+                          child: Column(
+                            children: [
+                              Text(
+                                'carteira',
+                                style:
+                                    AppTextStyles.bodyText1(context)?.copyWith(
+                                  color: AppColors.primary,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              AppDefaultButton(
+                                onPressed: () {},
+                                child: Text(
+                                  "Botão",
+                                  style: AppTextStyles.bodyText1(context)
+                                      ?.copyWith(
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              AppDefaultButton(
+                                onPressed: () {},
+                                backgroundColor: AppColors.secondary,
+                                child: Text(
+                                  "Botão",
+                                  style: AppTextStyles.bodyText1(context)
+                                      ?.copyWith(
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              AppDefaultButton(
+                                onPressed: () {},
+                                backgroundColor: AppColors.error,
+                                child: Text(
+                                  "Botão",
+                                  style: AppTextStyles.bodyText1(context)
+                                      ?.copyWith(
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+              }
+            },
+          ),
         ),
       ),
     );

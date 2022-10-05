@@ -47,7 +47,7 @@ class _SideMenuState extends State<SideMenu> {
                   ),
                   child: ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(500)),
-                    child: appController.loggedUser!.avatarUrl == null
+                    child: appController.loggedUser!.avatarUrl != null
                         ? ImageNetworkBuilder(
                             appController.loggedUser!.avatarUrl!,
                             boxFit: BoxFit.cover,
@@ -76,20 +76,29 @@ class _SideMenuState extends State<SideMenu> {
               ],
               DrawerListTile(
                 title: "Carteira",
-                icon: const Icon(
-                  Icons.wallet,
-                ),
+                icon: Icons.wallet,
+                selected: widget.homeController.page == HomePages.wallet,
                 onTap: () {
                   widget.homeController.page = HomePages.wallet;
+                  setState(() {});
+                  menuController.controlMenu();
+                },
+              ),
+              const SizedBox(height: 5),
+              DrawerListTile(
+                title: "Outro item",
+                icon: Icons.add,
+                selected: widget.homeController.page == HomePages.secondPage,
+                onTap: () {
+                  widget.homeController.page = HomePages.secondPage;
+                  setState(() {});
                   menuController.controlMenu();
                 },
               ),
               const Spacer(),
               DrawerListTile(
                 title: "Logout",
-                icon: const Icon(
-                  Icons.power_settings_new_outlined,
-                ),
+                icon: Icons.power_settings_new_outlined,
                 onTap: () {
                   appController.logout(context);
                 },
