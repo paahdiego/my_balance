@@ -15,6 +15,8 @@ class AppColors {
   static const Color warning = Color(0xFFF2C14E);
   static const Color error = Color(0xFFf78e31);
 
+  static const Color transparent = Colors.transparent;
+
   static Color foregroundColorBasedOnBackground(Color reference) {
     if (reference.computeLuminance() > 0.5) return fontColor;
     return Colors.white;

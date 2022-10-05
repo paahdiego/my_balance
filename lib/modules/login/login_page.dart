@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_balance/core/core.dart';
 import 'package:my_balance/modules/login/components/login_body.dart';
+import 'package:my_balance/shared/components/app_gradient_container.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -19,9 +21,12 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: Scaffold(
-        body: LoginBody(),
+    return const AppGradientContainer(
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: AppColors.transparent,
+          body: LoginBody(),
+        ),
       ),
     );
   }

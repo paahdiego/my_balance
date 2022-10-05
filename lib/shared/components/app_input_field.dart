@@ -40,7 +40,7 @@ class AppInputField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      style: AppTextStyles.bodyText1(context)?.copyWith(fontSize: 18),
+      style: AppTextStyles.bodyText1(context)?.copyWith(fontSize: 16),
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
         if (!currentFocus.hasPrimaryFocus) {
@@ -61,7 +61,7 @@ class AppInputField extends StatelessWidget {
         labelText: label,
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
-        labelStyle: AppTextStyles.bodyText1(context)?.copyWith(fontSize: 16),
+        labelStyle: AppTextStyles.bodyText1(context)?.copyWith(fontSize: 14),
         fillColor: AppColors.subBackgroundColor,
         focusColor: AppColors.primary,
         filled: true,
