@@ -52,7 +52,7 @@ class _SideMenuState extends State<SideMenu> {
                             appController.loggedUser!.avatarUrl!,
                             boxFit: BoxFit.cover,
                           )
-                        : const AppLogo(size: 30),
+                        : const AppLogo(size: 100),
                   ),
                 ),
                 const SizedBox(height: 20),

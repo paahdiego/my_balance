@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_balance/core/core.dart';
 import 'package:my_balance/modules/auth/auth_controller.dart';
+import 'package:my_balance/shared/components/app_gradient_container.dart';
 import 'package:my_balance/shared/components/app_loading_icon.dart';
 import 'package:my_balance/shared/components/app_logo.dart';
 
@@ -28,18 +29,23 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     final sizes = AppSizes(context);
 
-    return Scaffold(
-      body: SizedBox(
-        width: sizes.displayWidth,
-        height: sizes.safeHeight,
-        child: Center(
-          child: ListView(
-            shrinkWrap: true,
-            children: const [
-              AppLogo(),
-              SizedBox(height: 40),
-              Center(child: AppLoadingIcon()),
-            ],
+    return AppGradientContainer(
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: AppColors.transparent,
+          body: SizedBox(
+            width: sizes.displayWidth,
+            height: sizes.safeHeight,
+            child: Center(
+              child: ListView(
+                shrinkWrap: true,
+                children: const [
+                  AppLogo(),
+                  SizedBox(height: 40),
+                  Center(child: AppLoadingIcon()),
+                ],
+              ),
+            ),
           ),
         ),
       ),

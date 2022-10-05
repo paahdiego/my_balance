@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_balance/core/app_images.dart';
 import 'package:my_balance/core/core.dart';
 
 class AppLogo extends StatelessWidget {
@@ -12,6 +13,10 @@ class AppLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sizes = AppSizes(context);
-    return FlutterLogo(size: size ?? sizes.displayWidth * 0.35);
+    return Image.asset(
+      height: size ?? sizes.displayHeight * 0.25,
+      AppImages.logo,
+      fit: BoxFit.contain,
+    );
   }
 }
