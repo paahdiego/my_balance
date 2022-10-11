@@ -18,10 +18,10 @@ class AppController extends ChangeNotifier {
 
   Future<void> logout(BuildContext context) async {
     clear();
-    await AuthController.clearUserAndTokenFromStorage();
-
-    // ignore: use_build_context_synchronously
-    Navigator.pushReplacement(context, SplashPage.pageRoute(context));
+    await AuthController.clearUserAndTokenFromStorage().then(
+      (value) =>
+          Navigator.pushReplacement(context, SplashPage.pageRoute(context)),
+    );
   }
 
   static AppController instance(BuildContext context, {bool listen = false}) =>

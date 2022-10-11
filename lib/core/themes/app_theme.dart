@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_balance/core/core.dart';
 
+export 'theme_controller.dart';
+export 'theme_controller.dart';
+
 class AppThemes {
   static ThemeData darkTheme(BuildContext context) => ThemeData.dark().copyWith(
         primaryColor: AppColors.primary,
@@ -9,7 +12,6 @@ class AppThemes {
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
             foregroundColor: AppColors.primary,
-            elevation: 2.0,
             textStyle: AppTextStyles.caption(context)?.copyWith(fontSize: 14),
           ),
         ),
@@ -53,7 +55,6 @@ class AppThemes {
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
             foregroundColor: AppColors.primary,
-            elevation: 2.0,
             textStyle: AppTextStyles.caption(context)?.copyWith(fontSize: 14),
           ),
         ),

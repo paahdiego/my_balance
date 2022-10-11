@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_balance/core/themes/app_theme.dart';
-import 'package:my_balance/core/themes/theme_controller.dart';
 import 'package:my_balance/modules/splash/splash_page.dart';
 import 'package:provider/provider.dart';
 

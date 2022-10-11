@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_balance/core/app_images.dart';
 import 'package:my_balance/core/core.dart';
 
 class AppLogo extends StatelessWidget {

@@ -6,7 +6,7 @@ class AppColors {
   static const Color secondary = Color(0xFF72B01D);
   //Light Theme
   static const Color backgroundColorLight = white;
-  static const Color subBackgroundColorLight = Color(0xFFa3a3a3);
+  static const Color subBackgroundColorLight = Color(0xFFD5D5D5);
   static const Color fontColorLight = Color(0xFF222222);
   static const Color drawerBackgroundColorLight = Color(0xFFb8b8b8);
   //Dark Theme
